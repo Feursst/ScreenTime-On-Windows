@@ -22,21 +22,21 @@ public class TrayIconService : IDisposable
 
         var contextMenu = new ContextMenuStrip();
 
-        var openMenuItem = new ToolStripMenuItem("Abrir Screen Time Tracker");
+        var openMenuItem = new ToolStripMenuItem("Ouvrir Screen Time Tracker");
         openMenuItem.Font = new Font(openMenuItem.Font, FontStyle.Bold);
         openMenuItem.Click += (s, e) => OnOpenRequested?.Invoke();
         contextMenu.Items.Add(openMenuItem);
 
         contextMenu.Items.Add(new ToolStripSeparator());
 
-        var exitMenuItem = new ToolStripMenuItem("Salir completamente");
+        var exitMenuItem = new ToolStripMenuItem("Quitter complètement");
         exitMenuItem.Click += (s, e) => OnExitRequested?.Invoke();
         contextMenu.Items.Add(exitMenuItem);
 
         _notifyIcon = new NotifyIcon
         {
             Icon = appIcon ?? SystemIcons.Application,
-            Text = "Screen Time Tracker - Activo en segundo plano",
+            Text = "Screen Time Tracker - Actif en arrière-plan",
             Visible = true,
             ContextMenuStrip = contextMenu
         };
@@ -60,7 +60,7 @@ public class TrayIconService : IDisposable
             _notifyIcon.ShowBalloonTip(
                 2500,
                 "Screen Time Tracker",
-                "La aplicación continúa rastreando en segundo plano. Haz clic en este icono para abrirla de nuevo.",
+                "L'application continue le suivi en arrière-plan. Cliquez sur cette icône pour la rouvrir.",
                 ToolTipIcon.Info
             );
             _hasShownBalloon = true;

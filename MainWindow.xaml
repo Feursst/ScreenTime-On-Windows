@@ -51,10 +51,10 @@
             <!-- Center Date Navigator (Flat Geometric Strip) -->
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <!-- Anterior Button -->
-                <Button Style="{StaticResource ModernButtonStyle}" Command="{Binding PreviousDayCommand}" ToolTip="Ver el día anterior" Padding="10,6" Margin="0,0,8,0">
+                <Button Style="{StaticResource ModernButtonStyle}" Command="{Binding PreviousDayCommand}" ToolTip="Voir le jour précédent" Padding="10,6" Margin="0,0,8,0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="◀" FontSize="11" Margin="0,0,6,0" VerticalAlignment="Center"/>
-                        <TextBlock Text="Anterior" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Précédent" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
 
@@ -71,9 +71,9 @@
                 </Border>
 
                 <!-- Siguiente Button -->
-                <Button Style="{StaticResource ModernButtonStyle}" Command="{Binding NextDayCommand}" IsEnabled="{Binding CanGoToNextDay}" ToolTip="Avanzar al día siguiente" Padding="10,6" Margin="8,0,8,0">
+                <Button Style="{StaticResource ModernButtonStyle}" Command="{Binding NextDayCommand}" IsEnabled="{Binding CanGoToNextDay}" ToolTip="Passer au jour suivant" Padding="10,6" Margin="8,0,8,0">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Siguiente" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Suivant" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
                         <TextBlock Text="▶" FontSize="11" Margin="6,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
@@ -81,10 +81,10 @@
                 <!-- Volver a Hoy Button (Visible si se está viendo un día pasado) -->
                 <Button Style="{StaticResource PrimaryButtonStyle}" Command="{Binding GoToTodayCommand}"
                         Visibility="{Binding CanGoToNextDay, Converter={StaticResource BoolToVisConverter}}"
-                        ToolTip="Volver a la fecha de hoy en vivo" Padding="10,6">
+                        ToolTip="Revenir à aujourd'hui en direct" Padding="10,6">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="◷" FontSize="12" Foreground="#0C0F17" Margin="0,0,6,0" VerticalAlignment="Center"/>
-                        <TextBlock Text="Hoy" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Aujourd'hui" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -103,7 +103,7 @@
                 <Button Style="{StaticResource ModernButtonStyle}" Command="{Binding ToggleSettingsCommand}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="⚙" Margin="0,0,8,0" FontSize="13" VerticalAlignment="Center"/>
-                        <TextBlock Text="Configuración" VerticalAlignment="Center"/>
+                        <TextBlock Text="Paramètres" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -119,13 +119,13 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="EN PRIMER PLANO:" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBlock Text="AU PREMIER PLAN :" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     <TextBlock Text="{Binding ActiveCategoryIcon}" FontSize="13" Foreground="{StaticResource BrushAccent}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                     <TextBlock Text="{Binding ActiveAppText}" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="Categoría: " FontSize="12" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center"/>
+                    <TextBlock Text="Catégorie : " FontSize="12" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center"/>
                     <Border Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="10,3" Margin="6,0,0,0">
                         <TextBlock Text="{Binding ActiveCategory}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}"/>
                     </Border>
@@ -146,22 +146,22 @@
             </Grid.ColumnDefinitions>
 
             <!-- Card 0: Total General -->
-            <Border Grid.Column="0" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Haz clic para ver el gráfico semanal de tiempo total (Lun - Dom)">
+            <Border Grid.Column="0" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Cliquez pour voir le graphique hebdomadaire du temps total (Lun - Dim)">
                 <Border.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding OpenChartCommand}" CommandParameter="Total"/>
                 </Border.InputBindings>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="⏱" FontSize="14" Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding DateNavigationLabel, StringFormat='{}TIEMPO TOTAL {0}'}" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding DateNavigationLabel, StringFormat='{}TEMPS TOTAL {0}'}" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <TextBlock Text="{Binding TotalScreenTime}" FontSize="28" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" Margin="0,0,0,8"/>
-                    <TextBlock Text="Ver desglose semanal (Lun - Dom) →" FontSize="11" Foreground="{StaticResource BrushTextMuted}"/>
+                    <TextBlock Text="Voir le détail de la semaine (Lun - Dim) →" FontSize="11" Foreground="{StaticResource BrushTextMuted}"/>
                 </StackPanel>
             </Border>
 
             <!-- Card 1: Juegos -->
-            <Border Grid.Column="2" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Haz clic para ver el gráfico semanal de Juegos (Lun - Dom)">
+            <Border Grid.Column="2" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Cliquez pour voir le graphique hebdomadaire des Jeux (Lun - Dim)">
                 <Border.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding OpenChartCommand}" CommandParameter="Juegos"/>
                 </Border.InputBindings>
@@ -169,7 +169,7 @@
                     <Grid Margin="0,0,0,10">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="🎮" FontSize="14" Foreground="{StaticResource BrushAccent}" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="JUEGOS" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
+                            <TextBlock Text="JEUX" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
                         </StackPanel>
                         <TextBlock HorizontalAlignment="Right" Text="{Binding GamingPercent, StringFormat='{}{0:F0}%'}" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
                     </Grid>
@@ -180,7 +180,7 @@
             </Border>
 
             <!-- Card 2: Apps de Escritorio -->
-            <Border Grid.Column="4" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Haz clic para ver el gráfico semanal de Escritorio (Lun - Dom)">
+            <Border Grid.Column="4" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Cliquez pour voir le graphique hebdomadaire du Bureau (Lun - Dim)">
                 <Border.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding OpenChartCommand}" CommandParameter="Aplicaciones de Escritorio"/>
                 </Border.InputBindings>
@@ -188,7 +188,7 @@
                     <Grid Margin="0,0,0,10">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="📁" FontSize="14" Foreground="{StaticResource BrushAccent}" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="ESCRITORIO" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
+                            <TextBlock Text="BUREAU" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
                         </StackPanel>
                         <TextBlock HorizontalAlignment="Right" Text="{Binding DesktopPercent, StringFormat='{}{0:F0}%'}" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
                     </Grid>
@@ -199,7 +199,7 @@
             </Border>
 
             <!-- Card 3: Navegación Web -->
-            <Border Grid.Column="6" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Haz clic para ver el gráfico semanal de Navegación Web (Lun - Dom)">
+            <Border Grid.Column="6" Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="22,20" Cursor="Hand" ToolTip="Cliquez pour voir le graphique hebdomadaire de la Navigation Web (Lun - Dim)">
                 <Border.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding OpenChartCommand}" CommandParameter="Navegación Web"/>
                 </Border.InputBindings>
@@ -207,7 +207,7 @@
                     <Grid Margin="0,0,0,10">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="☁" FontSize="14" Foreground="{StaticResource BrushAccent}" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="NAVEGACIÓN WEB" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
+                            <TextBlock Text="NAVIGATION WEB" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}" VerticalAlignment="Center"/>
                         </StackPanel>
                         <TextBlock HorizontalAlignment="Right" Text="{Binding WebPercent, StringFormat='{}{0:F0}%'}" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
                     </Grid>
@@ -227,13 +227,13 @@
 
             <!-- Filter Buttons (Geometric Segments, CornerRadius=0) -->
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DateNavigationLabel, StringFormat='{}Desglose de {0}:'}" FontSize="14" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center" Margin="0,0,18,0"/>
+                <TextBlock Text="{Binding DateNavigationLabel, StringFormat='{}Détail — {0} :'}" FontSize="14" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center" Margin="0,0,18,0"/>
 
                 <Border Background="{StaticResource BrushCardBg}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0">
                     <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource FilterButtonStyle}" Content="Todas" Command="{Binding SetFilterCommand}" CommandParameter="Todas"/>
+                        <Button Style="{StaticResource FilterButtonStyle}" Content="Toutes" Command="{Binding SetFilterCommand}" CommandParameter="Todas"/>
                         <Border Width="1" Background="{StaticResource BrushCardBorder}"/>
-                        <Button Style="{StaticResource FilterButtonStyle}" Content="🎮  Juegos" Command="{Binding SetFilterCommand}" CommandParameter="Juegos"/>
+                        <Button Style="{StaticResource FilterButtonStyle}" Content="🎮  Jeux" Command="{Binding SetFilterCommand}" CommandParameter="Juegos"/>
                         <Border Width="1" Background="{StaticResource BrushCardBorder}"/>
                         <Button Style="{StaticResource FilterButtonStyle}" Content="📁  Apps" Command="{Binding SetFilterCommand}" CommandParameter="Aplicaciones de Escritorio"/>
                         <Border Width="1" Background="{StaticResource BrushCardBorder}"/>
@@ -242,7 +242,7 @@
                 </Border>
             </StackPanel>
 
-            <TextBlock Grid.Column="1" Text="Actualizado cada 5s" FontSize="11" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="Mis à jour toutes les 5 s" FontSize="11" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center"/>
         </Grid>
 
         <!-- 5. ACTIVITIES LIST / TABLE (Catalog Grid Style, CornerRadius=0) -->
@@ -253,8 +253,8 @@
                             Visibility="{Binding HasNoActivities, Converter={StaticResource BoolToVisConverter}}"
                             Margin="0,50,0,50">
                     <TextBlock Text="◷" FontSize="36" Foreground="{StaticResource BrushTextMuted}" HorizontalAlignment="Center" Margin="0,0,0,12"/>
-                    <TextBlock Text="Aún no hay actividades registradas en esta fecha" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Las aplicaciones que uses aparecerán aquí automáticamente cada 5 segundos." FontSize="12" Foreground="{StaticResource BrushTextMuted}" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                    <TextBlock Text="Aucune activité enregistrée à cette date pour l'instant" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Les applications que vous utilisez apparaîtront ici automatiquement toutes les 5 secondes." FontSize="12" Foreground="{StaticResource BrushTextMuted}" HorizontalAlignment="Center" Margin="0,4,0,0"/>
                 </StackPanel>
 
                 <!-- List of Items -->
@@ -284,7 +284,7 @@
 
                                         <!-- Category Badge (Flat, Minimal) -->
                                         <Border Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="8,3">
-                                            <TextBlock Text="{Binding Category}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}"/>
+                                            <TextBlock Text="{Binding CategoryDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}"/>
                                         </Border>
 
                                         <!-- Duration -->
@@ -292,7 +292,7 @@
 
                                         <!-- Proportion / Share Bar (Turquoise Accent) -->
                                         <StackPanel Grid.Column="4" VerticalAlignment="Center" Margin="0,0,16,0">
-                                            <TextBlock Text="{Binding PercentageOfTotal, StringFormat='{}{0:F1}% del total'}" FontSize="10" Foreground="{StaticResource BrushTextSecondary}" HorizontalAlignment="Right" Margin="0,0,0,3"/>
+                                            <TextBlock Text="{Binding PercentageOfTotal, StringFormat='{}{0:F1} % du total'}" FontSize="10" Foreground="{StaticResource BrushTextSecondary}" HorizontalAlignment="Right" Margin="0,0,0,3"/>
                                             <ProgressBar Style="{StaticResource ModernProgressBarStyle}" Value="{Binding PercentageOfTotal}" Maximum="100"/>
                                         </StackPanel>
 
@@ -336,9 +336,9 @@
                         <StackPanel VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="⚙" FontSize="18" Margin="0,0,10,0" Foreground="{StaticResource BrushAccent}" VerticalAlignment="Center"/>
-                                <TextBlock Text="Configuración" FontSize="19" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                <TextBlock Text="Paramètres" FontSize="19" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center"/>
                             </StackPanel>
-                            <TextBlock Text="Preferencias del sistema y bibliotecas de detección" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="28,3,0,0"/>
+                            <TextBlock Text="Préférences système et bibliothèques de détection" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="28,3,0,0"/>
                         </StackPanel>
                         <Button HorizontalAlignment="Right" Style="{StaticResource ModernButtonStyle}" Content="✕" Command="{Binding ToggleSettingsCommand}" Padding="10,6" FontSize="13" VerticalAlignment="Center"/>
                     </Grid>
@@ -362,7 +362,7 @@
                             </Button>
 
                             <!-- Tab Juegos -->
-                            <Button Content="Bibliotecas de Juegos" Command="{Binding SwitchSettingsTabCommand}" CommandParameter="Juegos">
+                            <Button Content="Bibliothèques de jeux" Command="{Binding SwitchSettingsTabCommand}" CommandParameter="Juegos">
                                 <Button.Style>
                                     <Style TargetType="Button" BasedOn="{StaticResource FilterButtonStyle}">
                                         <Style.Triggers>
@@ -390,15 +390,15 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel VerticalAlignment="Center" Margin="0,0,16,0">
-                                        <TextBlock Text="Iniciar con Windows" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}"/>
-                                        <TextBlock Text="Ejecuta Screen Time Tracker en segundo plano automáticamente al iniciar sesión en tu PC."
+                                        <TextBlock Text="Lancer au démarrage de Windows" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}"/>
+                                        <TextBlock Text="Lance automatiquement Screen Time Tracker en arrière-plan à l'ouverture de session sur votre PC."
                                                    FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,0" TextWrapping="Wrap"/>
                                     </StackPanel>
                                     <CheckBox Grid.Column="1" Style="{StaticResource ModernToggleSwitchStyle}" IsChecked="{Binding StartWithWindows}" VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Border Background="#18181B" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="12,10" Margin="0,14,0,0">
-                                    <TextBlock Text="Configurado en el Registro de Windows (HKCU\Software\Microsoft\Windows\CurrentVersion\Run) de forma segura y sin privilegios de Administrador."
+                                    <TextBlock Text="Configuré dans le Registre Windows (HKCU\Software\Microsoft\Windows\CurrentVersion\Run), de façon sûre et sans droits administrateur."
                                                FontSize="11" Foreground="{StaticResource BrushTextMuted}" TextWrapping="Wrap"/>
                                 </Border>
                             </StackPanel>
@@ -407,7 +407,7 @@
                         <!-- System Information Cards (Flat) -->
                         <Border Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="20,16">
                             <StackPanel>
-                                <TextBlock Text="Información del Sistema" FontSize="13" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" Margin="0,0,0,14"/>
+                                <TextBlock Text="Informations système" FontSize="13" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" Margin="0,0,0,14"/>
 
                                 <Grid Margin="0,0,0,10">
                                     <Grid.ColumnDefinitions>
@@ -415,8 +415,8 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Intervalo de sondeo:" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
-                                    <TextBlock Grid.Column="2" Text="Cada 5 segundos" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
+                                    <TextBlock Grid.Column="0" Text="Intervalle de relevé :" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
+                                    <TextBlock Grid.Column="2" Text="Toutes les 5 secondes" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
                                 </Grid>
 
                                 <Grid Margin="0,0,0,10">
@@ -425,7 +425,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Almacenamiento:" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
+                                    <TextBlock Grid.Column="0" Text="Stockage :" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
                                     <TextBlock Grid.Column="2" Text="data/screen_time_YYYY-MM-DD.json" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}"/>
                                 </Grid>
 
@@ -435,8 +435,8 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Privacidad:" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
-                                    <TextBlock Grid.Column="2" Text="100% Local y Offline" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
+                                    <TextBlock Grid.Column="0" Text="Confidentialité :" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
+                                    <TextBlock Grid.Column="2" Text="100 % local et hors ligne" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
                                 </Grid>
 
                                 <Grid Margin="0,0,0,10">
@@ -445,8 +445,8 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Detección Web:" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
-                                    <TextBlock Grid.Column="2" Text="Multinavegador (Chrome, Edge, Brave, Firefox, etc.)" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}"/>
+                                    <TextBlock Grid.Column="0" Text="Détection Web :" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
+                                    <TextBlock Grid.Column="2" Text="Multi-navigateur (Chrome, Edge, Brave, Firefox, etc.)" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}"/>
                                 </Grid>
 
                                 <Grid Margin="0,0,0,10">
@@ -455,7 +455,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Autor:" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
+                                    <TextBlock Grid.Column="0" Text="Auteur :" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
                                     <TextBlock Grid.Column="2" Text="Marcos Rieznik" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}"/>
                                 </Grid>
 
@@ -465,7 +465,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Licencia:" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
+                                    <TextBlock Grid.Column="0" Text="Licence :" FontSize="12" Foreground="{StaticResource BrushTextSecondary}"/>
                                     <TextBlock Grid.Column="2" Text="GNU General Public License v3.0 (GPLv3)" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushAccent}"/>
                                 </Grid>
                             </StackPanel>
@@ -481,7 +481,7 @@
 
                         <!-- Description & Input -->
                         <StackPanel Grid.Row="0" Margin="0,0,0,14">
-                            <TextBlock Text="Los procesos activos que se ejecuten dentro de estas carpetas se detectarán automáticamente como 'Juegos' (Steam, Epic, Battle.net, etc.). No requieres registrar ejecutables individualmente."
+                            <TextBlock Text="Les processus actifs lancés depuis ces dossiers seront automatiquement détectés comme « Jeux » (Steam, Epic, Battle.net, etc.). Inutile d'enregistrer chaque exécutable individuellement."
                                        TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,12"/>
 
                             <!-- Add Directory Input -->
@@ -494,9 +494,9 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBox Grid.Column="0" Style="{StaticResource ModernTextBoxStyle}" Text="{Binding NewDirectoryInput, UpdateSourceTrigger=PropertyChanged}" ToolTip="Ejemplo: D:\Juegos\SteamLibrary\steamapps\common"/>
-                                <Button Grid.Column="2" Style="{StaticResource ModernButtonStyle}" Content="Examinar..." Command="{Binding BrowseDirectoryCommand}"/>
-                                <Button Grid.Column="4" Style="{StaticResource PrimaryButtonStyle}" Content="Agregar Carpeta" Command="{Binding AddDirectoryCommand}"/>
+                                <TextBox Grid.Column="0" Style="{StaticResource ModernTextBoxStyle}" Text="{Binding NewDirectoryInput, UpdateSourceTrigger=PropertyChanged}" ToolTip="Exemple : D:\Jeux\SteamLibrary\steamapps\common"/>
+                                <Button Grid.Column="2" Style="{StaticResource ModernButtonStyle}" Content="Parcourir..." Command="{Binding BrowseDirectoryCommand}"/>
+                                <Button Grid.Column="4" Style="{StaticResource PrimaryButtonStyle}" Content="Ajouter le dossier" Command="{Binding AddDirectoryCommand}"/>
                             </Grid>
                         </StackPanel>
 
@@ -517,7 +517,7 @@
                                                     <TextBlock Grid.Column="1" Text="{Binding}" FontSize="12" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
                                                     <Button Grid.Column="2"
                                                             Style="{StaticResource ModernButtonStyle}"
-                                                            Content="Eliminar"
+                                                            Content="Supprimer"
                                                             FontSize="11"
                                                             Padding="8,3"
                                                             Command="{Binding DataContext.RemoveDirectoryCommand, RelativeSource={RelativeSource AncestorType=Window}}"
@@ -534,10 +534,10 @@
                     <!-- Footer -->
                     <Grid Grid.Row="3" Margin="0,16,0,0">
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Desarrollado por Marcos Rieznik" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}"/>
-                            <TextBlock Text="Licencia GNU General Public License v3.0 (GPLv3)" FontSize="10" Foreground="{StaticResource BrushTextMuted}" Margin="0,2,0,0"/>
+                            <TextBlock Text="Développé par Marcos Rieznik" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}"/>
+                            <TextBlock Text="Licence GNU General Public License v3.0 (GPLv3)" FontSize="10" Foreground="{StaticResource BrushTextMuted}" Margin="0,2,0,0"/>
                         </StackPanel>
-                        <Button Style="{StaticResource ModernButtonStyle}" Content="Cerrar" HorizontalAlignment="Right" Command="{Binding ToggleSettingsCommand}" Width="100"/>
+                        <Button Style="{StaticResource ModernButtonStyle}" Content="Fermer" HorizontalAlignment="Right" Command="{Binding ToggleSettingsCommand}" Width="100"/>
                     </Grid>
                 </Grid>
             </Border>
@@ -584,7 +584,7 @@
                                 <TextBlock Text="{Binding ChartIcon}" FontSize="20" Margin="0,0,10,0" Foreground="{StaticResource BrushAccent}" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding ChartTitle}" FontSize="20" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center"/>
                             </StackPanel>
-                            <TextBlock Text="Histórico semanal y distribución de tiempo de pantalla" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="30,4,0,0"/>
+                            <TextBlock Text="Historique hebdomadaire et répartition du temps d'écran" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="30,4,0,0"/>
                         </StackPanel>
 
                         <Button Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource ModernButtonStyle}" Content="✕" Command="{Binding CloseChartCommand}" Padding="10,6" FontSize="13" VerticalAlignment="Center"/>
@@ -604,10 +604,10 @@
                                     Style="{StaticResource ModernButtonStyle}"
                                     Command="{Binding PreviousWeekCommand}"
                                     Padding="12,6"
-                                    ToolTip="Ver la semana anterior">
+                                    ToolTip="Voir la semaine précédente">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="◀" FontSize="11" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Semana Anterior" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Semaine précédente" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
@@ -626,10 +626,10 @@
                                         Visibility="{Binding CanGoToCurrentWeek, Converter={StaticResource BoolToVisConverter}}"
                                         Padding="10,6"
                                         Margin="0,0,8,0"
-                                        ToolTip="Volver a la semana en curso">
+                                        ToolTip="Revenir à la semaine en cours">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="◷" FontSize="12" Foreground="{StaticResource BrushAccent}" Margin="0,0,6,0" VerticalAlignment="Center"/>
-                                        <TextBlock Text="Esta Semana" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Cette semaine" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
 
@@ -637,9 +637,9 @@
                                         Command="{Binding NextWeekCommand}"
                                         IsEnabled="{Binding CanGoToNextWeek}"
                                         Padding="12,6"
-                                        ToolTip="Avanzar a la siguiente semana">
+                                        ToolTip="Passer à la semaine suivante">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Siguiente" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Suivant" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
                                         <TextBlock Text="▶" FontSize="11" Margin="8,0,0,0" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
@@ -651,7 +651,7 @@
                     <Border Grid.Row="2" Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Margin="0,0,0,22">
                         <UniformGrid Rows="1" Columns="4">
                             <!-- 1. VOLVER A TODO -->
-                            <Button Content="⏱  Todo" Command="{Binding SwitchChartCategoryCommand}" CommandParameter="Total">
+                            <Button Content="⏱  Tout" Command="{Binding SwitchChartCategoryCommand}" CommandParameter="Total">
                                 <Button.Style>
                                     <Style TargetType="Button" BasedOn="{StaticResource FilterButtonStyle}">
                                         <Style.Triggers>
@@ -666,7 +666,7 @@
                             </Button>
 
                             <!-- 2. JUEGOS -->
-                            <Button Content="🎮  Juegos" Command="{Binding SwitchChartCategoryCommand}" CommandParameter="Juegos">
+                            <Button Content="🎮  Jeux" Command="{Binding SwitchChartCategoryCommand}" CommandParameter="Juegos">
                                 <Button.Style>
                                     <Style TargetType="Button" BasedOn="{StaticResource FilterButtonStyle}">
                                         <Style.Triggers>
@@ -681,7 +681,7 @@
                             </Button>
 
                             <!-- 3. ESCRITORIO -->
-                            <Button Content="📁  Escritorio" Command="{Binding SwitchChartCategoryCommand}" CommandParameter="Aplicaciones de Escritorio">
+                            <Button Content="📁  Bureau" Command="{Binding SwitchChartCategoryCommand}" CommandParameter="Aplicaciones de Escritorio">
                                 <Button.Style>
                                     <Style TargetType="Button" BasedOn="{StaticResource FilterButtonStyle}">
                                         <Style.Triggers>
@@ -724,21 +724,21 @@
 
                         <Border Grid.Column="0" Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="16,14">
                             <StackPanel>
-                                <TextBlock Text="TOTAL DE LA SEMANA" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}"/>
+                                <TextBlock Text="TOTAL DE LA SEMAINE" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}"/>
                                 <TextBlock Text="{Binding WeekTotalFormatted}" FontSize="20" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" Margin="0,4,0,0"/>
                             </StackPanel>
                         </Border>
 
                         <Border Grid.Column="2" Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="16,14">
                             <StackPanel>
-                                <TextBlock Text="PROMEDIO DIARIO" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}"/>
+                                <TextBlock Text="MOYENNE QUOTIDIENNE" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}"/>
                                 <TextBlock Text="{Binding WeekAverageFormatted}" FontSize="20" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" Margin="0,4,0,0"/>
                             </StackPanel>
                         </Border>
 
                         <Border Grid.Column="4" Background="#121214" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" CornerRadius="0" Padding="16,14">
                             <StackPanel>
-                                <TextBlock Text="DÍA CON MÁS ACTIVIDAD" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}"/>
+                                <TextBlock Text="JOUR LE PLUS ACTIF" FontSize="11" FontWeight="Bold" Foreground="{StaticResource BrushTextSecondary}"/>
                                 <TextBlock Text="{Binding WeekPeakDay}" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushAccent}" Margin="0,6,0,0" TextTrimming="CharacterEllipsis"/>
                             </StackPanel>
                         </Border>
@@ -754,7 +754,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Margin="8,0" VerticalAlignment="Bottom" Cursor="Hand" ToolTip="Haz clic para ver el desglose detallado de este día">
+                                    <Grid Margin="8,0" VerticalAlignment="Bottom" Cursor="Hand" ToolTip="Cliquez pour voir le détail de ce jour">
                                         <Grid.InputBindings>
                                             <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.SelectDayFromChartCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"/>
                                         </Grid.InputBindings>
@@ -797,7 +797,7 @@
                                             <Border Background="{StaticResource BrushAccent}" CornerRadius="0" Padding="6,2" Margin="0,4,0,0"
                                                     HorizontalAlignment="Center"
                                                     Visibility="{Binding IsToday, Converter={StaticResource BoolToVisConverter}}">
-                                                <TextBlock Text="HOY" FontSize="9" FontWeight="Bold" Foreground="#121214"/>
+                                                <TextBlock Text="AUJ." FontSize="9" FontWeight="Bold" Foreground="#121214"/>
                                             </Border>
                                         </StackPanel>
                                     </Grid>
@@ -807,7 +807,7 @@
                     </Border>
 
                     <!-- Footer -->
-                    <Button Grid.Row="5" Style="{StaticResource ModernButtonStyle}" Content="Cerrar" HorizontalAlignment="Right" Command="{Binding CloseChartCommand}" Width="100"/>
+                    <Button Grid.Row="5" Style="{StaticResource ModernButtonStyle}" Content="Fermer" HorizontalAlignment="Right" Command="{Binding CloseChartCommand}" Width="100"/>
                 </Grid>
             </Border>
         </Grid>

@@ -233,7 +233,7 @@ public class WindowTrackerService
     {
         if (processName.Equals("explorer", StringComparison.OrdinalIgnoreCase))
         {
-            return string.IsNullOrWhiteSpace(windowTitle) ? "Explorador de Windows" : windowTitle;
+            return string.IsNullOrWhiteSpace(windowTitle) ? "Explorateur Windows" : windowTitle;
         }
 
         if (processName.Equals("code", StringComparison.OrdinalIgnoreCase))
@@ -258,7 +258,7 @@ public class WindowTrackerService
 
         if (processName.Equals("steam", StringComparison.OrdinalIgnoreCase))
         {
-            return "Steam (Tienda / Biblioteca)";
+            return "Steam (Magasin / Bibliothèque)";
         }
 
         if (processName.Equals("epicgameslauncher", StringComparison.OrdinalIgnoreCase))

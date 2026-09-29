@@ -23,20 +23,20 @@ public class MainViewModel : ViewModelBase
     private string _gamingTime = "00m 00s";
     private int _gamingSeconds;
     private double _gamingPercent;
-    private string _topGame = "Sin actividad";
+    private string _topGame = "Aucune activité";
 
     private string _desktopTime = "00m 00s";
     private int _desktopSeconds;
     private double _desktopPercent;
-    private string _topDesktopApp = "Sin actividad";
+    private string _topDesktopApp = "Aucune activité";
 
     private string _webTime = "00m 00s";
     private int _webSeconds;
     private double _webPercent;
-    private string _topWebDomain = "Sin actividad";
+    private string _topWebDomain = "Aucune activité";
 
-    private string _activeAppText = "Esperando detección...";
-    private string _activeCategory = "Inactivo";
+    private string _activeAppText = "En attente de détection...";
+    private string _activeCategory = "Inactif";
     private string _activeCategoryIcon = "⏸️";
 
     private string _selectedFilter = "Todas";
@@ -66,16 +66,16 @@ public class MainViewModel : ViewModelBase
 
     public bool IsViewingToday => _selectedDate.Date == DateTime.Today;
     public bool CanGoToNextDay => _selectedDate.Date < DateTime.Today;
-    public string ViewModeBadge => IsViewingToday ? "EN VIVO" : "HISTORIAL";
+    public string ViewModeBadge => IsViewingToday ? "EN DIRECT" : "HISTORIQUE";
 
     public string DateNavigationLabel
     {
         get
         {
             int diff = (int)(DateTime.Today - _selectedDate.Date).TotalDays;
-            if (diff == 0) return "HOY";
-            if (diff == 1) return "AYER";
-            return $"HACE {diff} DÍAS";
+            if (diff == 0) return "AUJOURD'HUI";
+            if (diff == 1) return "HIER";
+            return $"IL Y A {diff} JOURS";
         }
     }
 
@@ -88,14 +88,14 @@ public class MainViewModel : ViewModelBase
     private bool _isChartOpen;
     private DateTime _chartReferenceDate = DateTime.Today;
     private string _selectedChartCategory = "Total";
-    private string _chartTitle = "Tiempo Semanal";
-    private string _chartSubtitle = "Lunes a Domingo";
+    private string _chartTitle = "Temps hebdomadaire";
+    private string _chartSubtitle = "Lundi à dimanche";
     private string _chartIcon = "⏳";
     private string _chartColor = "#6366F1";
     private string _chartColorBg = "#232048";
     private string _weekTotalFormatted = "00m 00s";
-    private string _weekAverageFormatted = "00m 00s / día";
-    private string _weekPeakDay = "Sin actividad";
+    private string _weekAverageFormatted = "00m 00s / jour";
+    private string _weekPeakDay = "Aucune activité";
 
     public bool CanGoToNextWeek
     {
@@ -128,10 +128,10 @@ public class MainViewModel : ViewModelBase
             int daysDiff = (int)(currentMonday - refMonday).TotalDays;
             int weeksAgo = daysDiff / 7;
 
-            if (weeksAgo == 0) return "SEMANA ACTUAL";
-            if (weeksAgo == 1) return "HACE 1 SEMANA";
-            if (weeksAgo > 1) return $"HACE {weeksAgo} SEMANAS";
-            return "FUTURO";
+            if (weeksAgo == 0) return "SEMAINE EN COURS";
+            if (weeksAgo == 1) return "IL Y A 1 SEMAINE";
+            if (weeksAgo > 1) return $"IL Y A {weeksAgo} SEMAINES";
+            return "FUTUR";
         }
     }
 
@@ -228,7 +228,7 @@ public class MainViewModel : ViewModelBase
         }
     }
 
-    public string TrackingStatusText => IsTracking ? "Rastreando en vivo" : "Rastreo en pausa";
+    public string TrackingStatusText => IsTracking ? "Suivi en direct" : "Suivi en pause";
     public string TrackingStatusColor => IsTracking ? "#10B981" : "#F59E0B";
 
     public string CurrentDateFormatted
@@ -510,8 +510,8 @@ public class MainViewModel : ViewModelBase
 
     private void UpdateDateString()
     {
-        var culture = new CultureInfo("es-ES");
-        string formatted = _selectedDate.ToString("dddd, d 'de' MMMM 'de' yyyy", culture);
+        var culture = new CultureInfo("fr-FR");
+        string formatted = _selectedDate.ToString("dddd d MMMM yyyy", culture);
         CurrentDateFormatted = char.ToUpper(formatted[0]) + formatted[1..];
     }
 
@@ -548,7 +548,7 @@ public class MainViewModel : ViewModelBase
         System.Windows.Application.Current?.Dispatcher.Invoke(() =>
         {
             ActiveAppText = string.IsNullOrWhiteSpace(current.Detail) ? current.ProcessName : current.Detail;
-            ActiveCategory = current.Category;
+            ActiveCategory = CategoryNames.ToDisplay(current.Category);
             ActiveCategoryIcon = current.Category switch
             {
                 "Juegos" => "🎮",
@@ -593,21 +593,21 @@ public class MainViewModel : ViewModelBase
             .Where(a => a.Category == "Juegos")
             .OrderByDescending(a => a.SecondsSpent)
             .FirstOrDefault();
-        TopGame = topGameRecord != null ? $"{topGameRecord.Detail} ({topGameRecord.FormattedDuration})" : (IsViewingToday ? "Sin juegos hoy" : "Sin juegos este día");
+        TopGame = topGameRecord != null ? $"{topGameRecord.Detail} ({topGameRecord.FormattedDuration})" : (IsViewingToday ? "Aucun jeu aujourd'hui" : "Aucun jeu ce jour-là");
 
         // Top App
         var topAppRecord = data.Activities.Values
             .Where(a => a.Category == "Aplicaciones de Escritorio")
             .OrderByDescending(a => a.SecondsSpent)
             .FirstOrDefault();
-        TopDesktopApp = topAppRecord != null ? $"{topAppRecord.Detail} ({topAppRecord.FormattedDuration})" : (IsViewingToday ? "Sin apps hoy" : "Sin apps este día");
+        TopDesktopApp = topAppRecord != null ? $"{topAppRecord.Detail} ({topAppRecord.FormattedDuration})" : (IsViewingToday ? "Aucune app aujourd'hui" : "Aucune app ce jour-là");
 
         // Top Web
         var topWebRecord = data.Activities.Values
             .Where(a => a.Category == "Navegación Web" || a.Category == "Navegación Web (Edge)")
             .OrderByDescending(a => a.SecondsSpent)
             .FirstOrDefault();
-        TopWebDomain = topWebRecord != null ? $"{topWebRecord.Detail} ({topWebRecord.FormattedDuration})" : (IsViewingToday ? "Sin navegación hoy" : "Sin navegación este día");
+        TopWebDomain = topWebRecord != null ? $"{topWebRecord.Detail} ({topWebRecord.FormattedDuration})" : (IsViewingToday ? "Aucune navigation aujourd'hui" : "Aucune navigation ce jour-là");
     }
 
     private void RefreshDisplayList()
@@ -670,7 +670,7 @@ public class MainViewModel : ViewModelBase
     {
         var dialog = new Microsoft.Win32.OpenFolderDialog
         {
-            Title = "Selecciona la carpeta de tu biblioteca de juegos (Steam, Epic, etc.)"
+            Title = "Sélectionnez le dossier de votre bibliothèque de jeux (Steam, Epic, etc.)"
         };
 
         if (dialog.ShowDialog() == true)
@@ -742,36 +742,36 @@ public class MainViewModel : ViewModelBase
         switch (SelectedChartCategory)
         {
             case "Juegos":
-                ChartTitle = "Distribución Semanal: Juegos";
+                ChartTitle = "Répartition hebdomadaire : Jeux";
                 ChartIcon = "🎮";
                 ChartColor = "#2DD4BF";
                 ChartColorBg = "#132E2B";
                 break;
             case "Aplicaciones de Escritorio":
-                ChartTitle = "Distribución Semanal: Escritorio";
+                ChartTitle = "Répartition hebdomadaire : Bureau";
                 ChartIcon = "📁";
                 ChartColor = "#2DD4BF";
                 ChartColorBg = "#132E2B";
                 break;
             case "Navegación Web":
             case "Navegación Web (Edge)":
-                ChartTitle = "Distribución Semanal: Navegación Web";
+                ChartTitle = "Répartition hebdomadaire : Navigation Web";
                 ChartIcon = "☁";
                 ChartColor = "#2DD4BF";
                 ChartColorBg = "#132E2B";
                 break;
             default:
-                ChartTitle = "Distribución Semanal: Todo";
+                ChartTitle = "Répartition hebdomadaire : Tout";
                 ChartIcon = "⏱";
                 ChartColor = "#2DD4BF";
                 ChartColorBg = "#132E2B";
                 break;
         }
 
-        var culture = new CultureInfo("es-ES");
+        var culture = new CultureInfo("fr-FR");
         DateTime monday = weekDates[0];
         DateTime sunday = weekDates[6];
-        ChartSubtitle = $"Del {monday.ToString("d 'de' MMMM", culture)} al {sunday.ToString("d 'de' MMMM 'de' yyyy", culture)}";
+        ChartSubtitle = $"Du {monday.ToString("d MMMM", culture)} au {sunday.ToString("d MMMM yyyy", culture)}";
 
         var daySecondsList = new List<int>();
         foreach (var d in weekDates)
@@ -797,13 +797,13 @@ public class MainViewModel : ViewModelBase
 
         int totalWeekSec = daySecondsList.Sum();
         WeekTotalFormatted = DailyTrackingData.FormatSeconds(totalWeekSec);
-        WeekAverageFormatted = $"{DailyTrackingData.FormatSeconds(totalWeekSec / 7)} / día";
+        WeekAverageFormatted = $"{DailyTrackingData.FormatSeconds(totalWeekSec / 7)} / jour";
 
         int peakSec = -1;
-        string peakDayName = "Sin actividad";
+        string peakDayName = "Aucune activité";
 
-        string[] dayNames = { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo" };
-        string[] dayShortNames = { "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom" };
+        string[] dayNames = { "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche" };
+        string[] dayShortNames = { "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" };
 
         var newBars = new List<DayBarItem>();
         for (int i = 0; i < 7; i++)

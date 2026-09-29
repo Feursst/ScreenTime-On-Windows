@@ -35,7 +35,7 @@ public class BrowserAutomationService
         {
             return name;
         }
-        return "Navegador Web";
+        return "Navigateur Web";
     }
 
     public string TryGetBrowserUrlOrDomain(IntPtr hWnd, string exeName, string windowTitle)
@@ -144,7 +144,7 @@ public class BrowserAutomationService
         // Clean browser-specific suffix patterns
         if (exeName.Equals("msedge.exe", StringComparison.OrdinalIgnoreCase))
         {
-            cleaned = Regex.Replace(cleaned, @"\s*-\s*(Personal:\s*|Perfil\s*\d+:\s*)?Microsoft\s*Edge.*$", "", RegexOptions.IgnoreCase);
+            cleaned = Regex.Replace(cleaned, @"\s*-\s*(Personal:\s*|Perfil\s*\d+:\s*|Profil\s*\d+:\s*)?Microsoft\s*Edge.*$", "", RegexOptions.IgnoreCase);
         }
         else if (exeName.Equals("chrome.exe", StringComparison.OrdinalIgnoreCase))
         {

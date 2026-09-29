@@ -1,4 +1,5 @@
 using System;
+using ScreenTimeTracker.Models;
 
 namespace ScreenTimeTracker.ViewModels;
 
@@ -38,6 +39,7 @@ public class ActivityDisplayItem : ViewModelBase
         {
             if (SetField(ref _category, value))
             {
+                OnPropertyChanged(nameof(CategoryDisplay));
                 OnPropertyChanged(nameof(CategoryIcon));
                 OnPropertyChanged(nameof(CategoryColor));
                 OnPropertyChanged(nameof(CategoryBadgeBg));
@@ -95,6 +97,8 @@ public class ActivityDisplayItem : ViewModelBase
     }
 
     public string LastActiveText => LastActive.ToString("HH:mm:ss");
+
+    public string CategoryDisplay => CategoryNames.ToDisplay(Category);
 
     public string CategoryIcon => Category switch
     {
